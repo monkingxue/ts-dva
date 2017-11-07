@@ -13,13 +13,10 @@ const env = process.env.NODE_ENV.trim()
 module.exports = {
 	entry: {
 		app: path.join(src, "index.tsx"),
-
-		// ================================
-		// 框架 / 类库 分离打包
-		// ================================
 		vendor: [
 			"react",
-			"react-dom"
+			"react-dom",
+			"react-router-dom"
 		]
 	},
 	output: {
@@ -31,19 +28,7 @@ module.exports = {
 	target: "web",
 	resolve: {
 		extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
-		mainFields: ['browser', 'main'],
-		alias: {
-			// ================================
-			// 自定义路径别名
-			// ================================
-			SRC: src,
-			ASSET: path.join(src, "assets"),
-			COMPONENT: path.join(src, "components"),
-			PAGE: path.join(src, "pages"),
-			SERVICE: path.join(src, "services"),
-			UTIL: path.join(src, "utils"),
-			VIEW: path.join(src, "views")
-		},
+		mainFields: ['browser', 'main']
 	},
 	module: {
 		rules: [{
@@ -56,7 +41,7 @@ module.exports = {
 			include: src,
 			exclude: [/node_modules/, nm]
 		}, {
-			test: /\.css$/,
+			test: /\.p?css$/,
 			use: [{
 				loader: "style-loader"
 			}, {
@@ -97,6 +82,12 @@ module.exports = {
 		})
 	],
 	devServer: {
+		proxy: {
+			"/api": {
+				target: "https://www.v2ex.com",
+				changeOrigin: true
+			}
+		},
 		contentBase: src,
 		hot: true,
 		open: true,

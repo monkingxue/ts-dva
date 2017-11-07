@@ -1,19 +1,24 @@
-import { Button } from 'antd-mobile';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+	BrowserRouter as Router,
+	Route
+} from 'react-router-dom';
+
+import Header from './Header';
+import TechNews from './TechNews';
 
 class App extends React.Component<{}, {}> {
 	public render() {
 		return (
-			<div>
-				<div>ceshi</div>
-				<Button>ceshidede</Button>
-				<div>ok</div>
-			</div>
+			<Router>
+				<div>
+					<Header></Header>
+					<Route path="/" component={TechNews}></Route>
+				</div>
+			</Router>
 		);
 	}
 }
 
-const root = document.getElementById('app');
-
-ReactDOM.render(<App />, root);
+ReactDOM.render(<App />, document.getElementById('app'));
