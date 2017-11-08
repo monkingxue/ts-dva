@@ -30,3 +30,13 @@ export interface TopicInfo {
 	last_modified: number;
 	last_touched: number;
 }
+
+export interface Reply {
+	id: number;
+	thanks: number;
+	content: string;
+	content_rendered: string;
+	member: User;
+	created: number;
+	last_modified: number;
+}

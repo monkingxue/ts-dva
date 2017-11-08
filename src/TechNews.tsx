@@ -16,7 +16,7 @@ export default class TechNews extends React.Component<{}, {}> {
 			<Tabs
 				tabs={tabs}
 				initialPage={0}>
-				{category.map(([_, id]: [string, number]) => <Content key={id} tid={id} />)}
+				{category.map(([_, id]: [string, number]) => <Content key={id} nodeId={id} />)}
 			</Tabs>
 		);
 	}

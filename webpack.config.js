@@ -86,6 +86,10 @@ module.exports = {
 			"/api": {
 				target: "https://www.v2ex.com",
 				changeOrigin: true
+			},
+			"/WeatherApi": {
+				target: "http://wthrcdn.etouch.cn",
+				changeOrigin: true
 			}
 		},
 		contentBase: src,
